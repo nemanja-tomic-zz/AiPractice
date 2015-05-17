@@ -37,6 +37,10 @@
 			this.statusLabel = new System.Windows.Forms.Label();
 			this.guidedWalkerBtn = new System.Windows.Forms.Button();
 			this.bouncingBallBtn = new System.Windows.Forms.Button();
+			this.objectCount = new System.Windows.Forms.TextBox();
+			this.objectCountLabel = new System.Windows.Forms.Label();
+			this.randomObjectsBtn = new System.Windows.Forms.Button();
+			this.multipleObjectsTimer = new System.Windows.Forms.Timer(this.components);
 			this.SuspendLayout();
 			// 
 			// startWalkerBtn
@@ -59,6 +63,7 @@
 			// 
 			// flowTimer
 			// 
+			this.flowTimer.Interval = 13;
 			this.flowTimer.Tick += new System.EventHandler(this.flowTimer_Tick);
 			// 
 			// startWalker8Btn
@@ -84,7 +89,7 @@
 			// statusLabel
 			// 
 			this.statusLabel.AutoSize = true;
-			this.statusLabel.Location = new System.Drawing.Point(878, 12);
+			this.statusLabel.Location = new System.Drawing.Point(888, 487);
 			this.statusLabel.Name = "statusLabel";
 			this.statusLabel.Size = new System.Drawing.Size(35, 13);
 			this.statusLabel.TabIndex = 4;
@@ -110,11 +115,45 @@
 			this.bouncingBallBtn.UseVisualStyleBackColor = true;
 			this.bouncingBallBtn.Click += new System.EventHandler(this.bouncingBallBtn_Click);
 			// 
+			// objectCount
+			// 
+			this.objectCount.Location = new System.Drawing.Point(870, 12);
+			this.objectCount.Name = "objectCount";
+			this.objectCount.Size = new System.Drawing.Size(100, 20);
+			this.objectCount.TabIndex = 7;
+			// 
+			// objectCountLabel
+			// 
+			this.objectCountLabel.AutoSize = true;
+			this.objectCountLabel.Location = new System.Drawing.Point(791, 12);
+			this.objectCountLabel.Name = "objectCountLabel";
+			this.objectCountLabel.Size = new System.Drawing.Size(73, 13);
+			this.objectCountLabel.TabIndex = 8;
+			this.objectCountLabel.Text = "Total Objects:";
+			// 
+			// randomObjectsBtn
+			// 
+			this.randomObjectsBtn.Location = new System.Drawing.Point(476, 13);
+			this.randomObjectsBtn.Name = "randomObjectsBtn";
+			this.randomObjectsBtn.Size = new System.Drawing.Size(100, 23);
+			this.randomObjectsBtn.TabIndex = 9;
+			this.randomObjectsBtn.Text = "Random Objects";
+			this.randomObjectsBtn.UseVisualStyleBackColor = true;
+			this.randomObjectsBtn.Click += new System.EventHandler(this.randomObjectsBtn_Click);
+			// 
+			// multipleObjectsTimer
+			// 
+			this.multipleObjectsTimer.Interval = 10;
+			this.multipleObjectsTimer.Tick += new System.EventHandler(this.multipleObjectsTimer_Tick);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(982, 494);
+			this.ClientSize = new System.Drawing.Size(982, 509);
+			this.Controls.Add(this.randomObjectsBtn);
+			this.Controls.Add(this.objectCountLabel);
+			this.Controls.Add(this.objectCount);
 			this.Controls.Add(this.bouncingBallBtn);
 			this.Controls.Add(this.guidedWalkerBtn);
 			this.Controls.Add(this.statusLabel);
@@ -139,6 +178,10 @@
 		private System.Windows.Forms.Label statusLabel;
 		private System.Windows.Forms.Button guidedWalkerBtn;
 		private System.Windows.Forms.Button bouncingBallBtn;
+		private System.Windows.Forms.TextBox objectCount;
+		private System.Windows.Forms.Label objectCountLabel;
+		private System.Windows.Forms.Button randomObjectsBtn;
+		private System.Windows.Forms.Timer multipleObjectsTimer;
 	}
 }
 
