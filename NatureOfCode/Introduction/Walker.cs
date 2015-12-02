@@ -44,13 +44,19 @@ namespace NatureOfCode.Introduction
 
 		public Vector Acceleration { get; set; }
 		public float TopSpeed { get; set; }
-		public float Mass 
+		public float Mass
 		{
 			get { return 10; }
 		}
 
-		public Vector Velocity {
-			get { return new Vector(0, 0);  }
+		public Vector Velocity
+		{
+			get { return new Vector(0, 0); }
+		}
+
+		public Vector Location
+		{
+			get { return new Vector(0, 0); }
 		}
 
 		public void ApplyForce(Vector force)

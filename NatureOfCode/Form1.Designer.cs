@@ -57,7 +57,7 @@
 			// 
 			this.mainPanel.Location = new System.Drawing.Point(13, 42);
 			this.mainPanel.Name = "mainPanel";
-			this.mainPanel.Size = new System.Drawing.Size(957, 440);
+			this.mainPanel.Size = new System.Drawing.Size(1256, 440);
 			this.mainPanel.TabIndex = 1;
 			this.mainPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mainPanel_MouseMove);
 			// 
@@ -89,7 +89,7 @@
 			// statusLabel
 			// 
 			this.statusLabel.AutoSize = true;
-			this.statusLabel.Location = new System.Drawing.Point(888, 487);
+			this.statusLabel.Location = new System.Drawing.Point(1234, 487);
 			this.statusLabel.Name = "statusLabel";
 			this.statusLabel.Size = new System.Drawing.Size(35, 13);
 			this.statusLabel.TabIndex = 4;
@@ -117,7 +117,7 @@
 			// 
 			// objectCount
 			// 
-			this.objectCount.Location = new System.Drawing.Point(870, 12);
+			this.objectCount.Location = new System.Drawing.Point(1169, 9);
 			this.objectCount.Name = "objectCount";
 			this.objectCount.Size = new System.Drawing.Size(100, 20);
 			this.objectCount.TabIndex = 7;
@@ -125,7 +125,7 @@
 			// objectCountLabel
 			// 
 			this.objectCountLabel.AutoSize = true;
-			this.objectCountLabel.Location = new System.Drawing.Point(791, 12);
+			this.objectCountLabel.Location = new System.Drawing.Point(1090, 12);
 			this.objectCountLabel.Name = "objectCountLabel";
 			this.objectCountLabel.Size = new System.Drawing.Size(73, 13);
 			this.objectCountLabel.TabIndex = 8;
@@ -150,7 +150,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(982, 509);
+			this.ClientSize = new System.Drawing.Size(1281, 509);
 			this.Controls.Add(this.randomObjectsBtn);
 			this.Controls.Add(this.objectCountLabel);
 			this.Controls.Add(this.objectCount);

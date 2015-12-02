@@ -8,10 +8,12 @@ namespace NatureOfCode
 		void Display();
 		void Step();
 		void Step(Point target);
+		void ApplyForce(Vector force);
+
 		Vector Acceleration { get; set; }
 		float TopSpeed { get; set; }
 		float Mass { get; }
 		Vector Velocity { get; }
-		void ApplyForce(Vector force);
+		Vector Location { get; }
 	}
 }

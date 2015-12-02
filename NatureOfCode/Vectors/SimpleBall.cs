@@ -8,9 +8,9 @@ namespace NatureOfCode.Vectors
 		private Vector _velocity;
 		private Vector _location;
 		private readonly float _mass;
+		private readonly Graphics _graphics;
+		private readonly Panel _panel;
 
-		public Graphics Graphics { get; set; }
-		public Panel Panel { get; set; }
 		public Vector Acceleration { get; set; }
 		public float TopSpeed { get; set; }
 		public float Mass
@@ -23,10 +23,15 @@ namespace NatureOfCode.Vectors
 			get { return _velocity; }
 		}
 
+		public Vector Location
+		{
+			get { return _location; }
+		}
+
 		public SimpleBall(Panel panel, Graphics graphics, float mass)
 		{
-			Panel = panel;
-			Graphics = graphics;
+			_panel = panel;
+			_graphics = graphics;
 			_mass = mass;
 			_velocity = new Vector(0, 0);
 		}
@@ -39,7 +44,7 @@ namespace NatureOfCode.Vectors
 
 		public void Display()
 		{
-			Graphics.FillEllipse(Brushes.Aqua, (float)_location.X, (float)_location.Y, 30, 30);
+			_graphics.FillEllipse(Brushes.Coral, (float)_location.X, (float)_location.Y, _mass * 6, _mass * 6);
 		}
 
 		public void Step()
@@ -75,9 +80,9 @@ namespace NatureOfCode.Vectors
 
 		private void CheckEdges()
 		{
-			if (_location.X > Panel.Width)
+			if (_location.X > _panel.Width)
 			{
-				_location.X = Panel.Width;
+				_location.X = _panel.Width;
 				_velocity.X *= -1;
 			}
 			else if (_location.X < 0)
@@ -85,10 +90,10 @@ namespace NatureOfCode.Vectors
 				_location.X = 0;
 				_velocity.X *= -1;
 			}
-			if (_location.Y > Panel.Height)
+			if (_location.Y > _panel.Height)
 			{
 				_velocity.Y *= -1;
-				_location.Y = Panel.Height;
+				_location.Y = _panel.Height;
 			}
 			else if (_location.Y < 0)
 			{

@@ -16,7 +16,9 @@ namespace NatureOfCode
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new Form1());
+			var intro = Task.Factory.StartNew(() => Application.Run(new Form1()));
+			var space = Task.Factory.StartNew(() => Application.Run(new Space()));
+			Task.WaitAll(intro, space);
 		}
 	}
 }
