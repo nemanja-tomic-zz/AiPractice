@@ -16,7 +16,7 @@ namespace NatureOfCode
 		private BufferedGraphics _bufferedGraphics;
 		private readonly Attractor _attractor;
 
-		public const float G = 1;
+		public const float G = (float)1.5;
 
 
 		public Space()
@@ -32,13 +32,16 @@ namespace NatureOfCode
 			ClearScreen();
 			foreach (var movingObject in _spaceObjects)
 			{
-				if (movingObject.Acceleration == null)
-					movingObject.Acceleration = new Vector(0, -2);
-				movingObject.ApplyForce(_attractor.Attract(movingObject));
+				foreach (var spaceObject in _spaceObjects)
+				{
+					if (spaceObject == movingObject) continue;
+
+					var force = spaceObject.Attract(movingObject);
+					spaceObject.ApplyForce(force);
+				}
 				movingObject.Step();
 				movingObject.Display();
 			}
-
 			_bufferedGraphics.Render();
 		}
 
@@ -47,10 +50,17 @@ namespace NatureOfCode
 			InitializeDrawing();
 			ClearScreen();
 			_spaceObjects.Clear();
-			var object1 = new SimpleBall(mainPanel, _graphics, 400, 300, 3) { TopSpeed = 50 };
-			var object2 = new SimpleBall(mainPanel, _graphics, 480, 365, 10) { TopSpeed = 50 };
+			var object1 = new SimpleBall(mainPanel, _graphics, 400, 300, 3) { TopSpeed = 4 };
+			var object2 = new SimpleBall(mainPanel, _graphics, 680, 365, 20) { TopSpeed = 4 };
 			_spaceObjects.Add(object1);
 			_spaceObjects.Add(object2);
+			_spaceObjects.Add(new SimpleBall(mainPanel, _graphics, 280, 365, 10) { TopSpeed = 4 });
+			_spaceObjects.Add(new SimpleBall(mainPanel, _graphics, 380, 365, 30) { TopSpeed = 4 });
+			_spaceObjects.Add(new SimpleBall(mainPanel, _graphics, 480, 365, 50) { TopSpeed = 4 });
+			_spaceObjects.Add(new SimpleBall(mainPanel, _graphics, 580, 365, 22) { TopSpeed = 4 });
+			_spaceObjects.Add(new SimpleBall(mainPanel, _graphics, 680, 365, 17) { TopSpeed = 4 });
+			_spaceObjects.Add(new SimpleBall(mainPanel, _graphics, 410, 365, 4) { TopSpeed = 4 });
+			_spaceObjects.Add(new SimpleBall(mainPanel, _graphics, 430, 365, 7) { TopSpeed = 4 });
 			spaceTimer.Enabled = true;
 			KeyPreview = false;
 		}
@@ -58,7 +68,7 @@ namespace NatureOfCode
 		private void ClearScreen()
 		{
 			_graphics.FillRectangle(Brushes.Black, mainPanel.ClientRectangle);
-			_attractor.Display(_graphics);
+			//_attractor.Display(_graphics);
 		}
 
 		private void InitializeDrawing()

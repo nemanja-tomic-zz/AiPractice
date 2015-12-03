@@ -48,7 +48,7 @@
 			// 
 			this.mainPanel.Location = new System.Drawing.Point(12, 41);
 			this.mainPanel.Name = "mainPanel";
-			this.mainPanel.Size = new System.Drawing.Size(1228, 668);
+			this.mainPanel.Size = new System.Drawing.Size(1821, 781);
 			this.mainPanel.TabIndex = 12;
 			// 
 			// spaceTimer
@@ -60,7 +60,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1252, 721);
+			this.ClientSize = new System.Drawing.Size(1845, 834);
 			this.Controls.Add(this.mainPanel);
 			this.Controls.Add(this.spaceBtn);
 			this.Name = "Space";

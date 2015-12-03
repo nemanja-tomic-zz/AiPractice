@@ -59,6 +59,11 @@ namespace NatureOfCode.Introduction
 			get { return new Vector(0, 0); }
 		}
 
+		public Vector Attract(IMovingObject movingObject)
+		{
+			return new Vector(0, 0);
+		}
+
 		public void ApplyForce(Vector force)
 		{
 			Acceleration += force;

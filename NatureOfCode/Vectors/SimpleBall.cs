@@ -10,8 +10,15 @@ namespace NatureOfCode.Vectors
 		private readonly float _mass;
 		private readonly Graphics _graphics;
 		private readonly Panel _panel;
+		private Vector _acceleration;
+		private readonly float _radius;
 
-		public Vector Acceleration { get; set; }
+		public Vector Acceleration
+		{
+			get { return _acceleration ?? new Vector(0, 0); }
+			set { _acceleration = value; }
+		}
+
 		public float TopSpeed { get; set; }
 		public float Mass
 		{
@@ -28,12 +35,25 @@ namespace NatureOfCode.Vectors
 			get { return _location; }
 		}
 
+		public Vector Attract(IMovingObject movingObject)
+		{
+			var gravForce = movingObject.Location - Location;
+			var distance = gravForce.Magnitude;
+			if (distance < 10)
+				distance = 10;
+			var magnitude = (Space.G * Mass * movingObject.Mass) / (distance * distance);
+			gravForce.Normalize();
+
+			return gravForce * magnitude;
+		}
+
 		public SimpleBall(Panel panel, Graphics graphics, float mass)
 		{
 			_panel = panel;
 			_graphics = graphics;
 			_mass = mass;
 			_velocity = new Vector(0, 0);
+			_radius = _mass;
 		}
 
 		public SimpleBall(Panel panel, Graphics graphics, int x, int y, float mass)
@@ -44,7 +64,7 @@ namespace NatureOfCode.Vectors
 
 		public void Display()
 		{
-			_graphics.FillEllipse(Brushes.Coral, (float)_location.X, (float)_location.Y, _mass * 6, _mass * 6);
+			_graphics.DrawEllipse(Pens.Coral, (float)_location.X - (_radius / 2), (float)_location.Y - (_radius / 2), _radius, _radius);
 		}
 
 		public void Step()
@@ -80,25 +100,25 @@ namespace NatureOfCode.Vectors
 
 		private void CheckEdges()
 		{
-			if (_location.X > _panel.Width)
+			if ((_location.X + _radius / 2) > _panel.Width)
 			{
-				_location.X = _panel.Width;
+				_location.X = _panel.Width - _radius / 2;
 				_velocity.X *= -1;
 			}
-			else if (_location.X < 0)
+			else if ((_location.X - _radius / 2) < 0)
 			{
-				_location.X = 0;
+				_location.X = _radius / 2;
 				_velocity.X *= -1;
 			}
-			if (_location.Y > _panel.Height)
+			if ((_location.Y + _radius / 2) > _panel.Height)
 			{
 				_velocity.Y *= -1;
-				_location.Y = _panel.Height;
+				_location.Y = _panel.Height - _radius / 2;
 			}
-			else if (_location.Y < 0)
+			else if ((_location.Y - _radius / 2) < 0)
 			{
 				_velocity.Y *= -1;
-				_location.Y = 0;
+				_location.Y = _radius / 2;
 			}
 			//if (_location.X > Panel.Width || _location.X < 0)
 			//	Acceleration.X *= -1;

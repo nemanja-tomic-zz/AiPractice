@@ -15,5 +15,6 @@ namespace NatureOfCode
 		float Mass { get; }
 		Vector Velocity { get; }
 		Vector Location { get; }
+		Vector Attract(IMovingObject movingObject);
 	}
 }
