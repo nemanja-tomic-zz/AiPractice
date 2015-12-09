@@ -16,7 +16,7 @@ namespace NatureOfCode
 		private BufferedGraphics _bufferedGraphics;
 		private readonly Attractor _attractor;
 
-		public const float G = (float)1.5;
+		public const float G = (float)1;
 
 
 		public Space()

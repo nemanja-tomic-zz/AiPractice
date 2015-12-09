@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,9 +14,11 @@ namespace NatureOfCode
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			var intro = Task.Factory.StartNew(() => Application.Run(new Form1()));
-			var space = Task.Factory.StartNew(() => Application.Run(new Space()));
-			Task.WaitAll(intro, space);
+			Task.WaitAll(
+				//Task.Factory.StartNew(() => Application.Run(new Form1())),
+				//Task.Factory.StartNew(() => Application.Run(new Space())),
+				Task.Factory.StartNew(() => Application.Run(new TheGame()))
+			);
 		}
 	}
 }

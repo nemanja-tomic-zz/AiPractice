@@ -65,6 +65,14 @@
     <Compile Include="Space.Designer.cs">
       <DependentUpon>Space.cs</DependentUpon>
     </Compile>
+    <Compile Include="TestConnection.cs" />
+    <Compile Include="TheGame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TheGame.Designer.cs">
+      <DependentUpon>TheGame.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util.cs" />
     <Compile Include="Vectors\SimpleBall.cs" />
     <Compile Include="Vectors\Vector.cs" />
     <Compile Include="Water.cs" />
@@ -82,6 +90,9 @@
     </Compile>
     <EmbeddedResource Include="Space.resx">
       <DependentUpon>Space.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TheGame.resx">
+      <DependentUpon>TheGame.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
