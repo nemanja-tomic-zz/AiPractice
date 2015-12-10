@@ -1,5 +1,6 @@
 using System;
 using System.Drawing;
+using NatureOfCode.Vectors;
 
 namespace NatureOfCode
 {
@@ -7,6 +8,6 @@ namespace NatureOfCode
 	internal class TestConnection
 	{
 		public bool Ready = false;
-		public Point MouseLocation;
+		public Vector ObjectLocation;
 	}
 }

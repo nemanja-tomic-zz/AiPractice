@@ -2,6 +2,7 @@ using System;
 
 namespace NatureOfCode.Vectors
 {
+	[Serializable]
 	public class Vector
 	{
 		public Vector(double x, double y)

@@ -6,6 +6,7 @@ using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NatureOfCode.Vectors;
 
 namespace NatureOfCode
 {
@@ -21,7 +22,8 @@ namespace NatureOfCode
 		//private const string RemoteIp = "192.168.50.120"; //deki
 		private string _remoteIp;
 		private Point _mouseLocation;
-		private Point _opponentMouse;
+		private Vector _opponent;
+		private readonly SimpleBall _myObject;
 		private const int Port = 8887;
 
 		public TheGame()
@@ -34,17 +36,17 @@ namespace NatureOfCode
 
 			InitializeDrawing();
 			ClearScreen();
-			//_movingObject = new SimpleBall(mainPanel, _graphics, mainPanel.ClientSize.Width / 2, mainPanel.ClientSize.Height / 2, 10)
-			//{
-			//	Acceleration = new Vector(0, 1),
-			//	TopSpeed = 10
-			//};
+			_myObject = new SimpleBall(mainPanel, _graphics, mainPanel.ClientSize.Width / 2, mainPanel.ClientSize.Height / 2, 10)
+			{
+				Acceleration = new Vector(0, 1),
+				TopSpeed = 10
+			};
 			KeyPreview = true;
 		}
 
 		private void StartListening()
 		{
-			Task.Factory.StartNew(async () =>
+			Task.Factory.StartNew(() =>
 			{
 				var ipEndPoint = new IPEndPoint(IPAddress.Any, Port);
 				while (true)
@@ -58,9 +60,9 @@ namespace NatureOfCode
 							var sendData = Util.ObjectToByteArray(new TestConnection { Ready = true });
 							_myself.Send(sendData, sendData.Length, ipEndPoint);
 						}
-						if (!testConnection.MouseLocation.Equals(default(Point)))
+						if (testConnection.ObjectLocation != null && !testConnection.ObjectLocation.Equals(default(Vector)))
 						{
-							_opponentMouse = testConnection.MouseLocation;
+							_opponent = testConnection.ObjectLocation;
 						}
 					}
 					catch (SocketException)
@@ -103,10 +105,19 @@ namespace NatureOfCode
 		private void gameTimer_Tick(object sender, EventArgs e)
 		{
 			ClearScreen();
+
+			_myObject.Step(_mouseLocation);
+			_myObject.Display();
+
+			if (_opponent != null)
+			{
+				opponentLocation.Text = string.Format("{0}.{1}", (int)_opponent.X, (int)_opponent.Y);
+				_graphics.DrawEllipse(Pens.Red, (float)_opponent.X - 5, (float)_opponent.Y - 5, 10, 10);
+			}
+
 			_bufferedGraphics.Render();
 
-			opponentMouse.Text = string.Format("{0}.{1}", _opponentMouse.X, _opponentMouse.Y);
-			var testConnection = new TestConnection { MouseLocation = _mouseLocation };
+			var testConnection = new TestConnection { ObjectLocation = _myObject.Location };
 			var data = Util.ObjectToByteArray(testConnection);
 			_myself.Send(data, data.Length, _remoteMachine);
 		}
@@ -143,6 +154,7 @@ namespace NatureOfCode
 				Connect();
 				PrintStatus("Ready!");
 				gameTimer.Enabled = true;
+				gameTimer.Interval = 16;
 			}
 			catch (Exception ex)
 			{

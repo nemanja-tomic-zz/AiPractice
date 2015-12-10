@@ -36,7 +36,7 @@
 			this.button1 = new System.Windows.Forms.Button();
 			this.remoteMachine = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
-			this.opponentMouse = new System.Windows.Forms.Label();
+			this.opponentLocation = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// mainPanel
@@ -96,18 +96,18 @@
 			// 
 			// opponentMouse
 			// 
-			this.opponentMouse.AutoSize = true;
-			this.opponentMouse.Location = new System.Drawing.Point(1363, 580);
-			this.opponentMouse.Name = "opponentMouse";
-			this.opponentMouse.Size = new System.Drawing.Size(0, 13);
-			this.opponentMouse.TabIndex = 6;
+			this.opponentLocation.AutoSize = true;
+			this.opponentLocation.Location = new System.Drawing.Point(1363, 580);
+			this.opponentLocation.Name = "opponentLocation";
+			this.opponentLocation.Size = new System.Drawing.Size(0, 13);
+			this.opponentLocation.TabIndex = 6;
 			// 
 			// TheGame
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1444, 630);
-			this.Controls.Add(this.opponentMouse);
+			this.Controls.Add(this.opponentLocation);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.remoteMachine);
 			this.Controls.Add(this.button1);
@@ -130,6 +130,6 @@
 		private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.TextBox remoteMachine;
 		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Label opponentMouse;
+		private System.Windows.Forms.Label opponentLocation;
 	}
 }
