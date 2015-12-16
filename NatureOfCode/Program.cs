@@ -17,7 +17,8 @@ namespace NatureOfCode
 			Task.WaitAll(
 				//Task.Factory.StartNew(() => Application.Run(new Form1())),
 				//Task.Factory.StartNew(() => Application.Run(new Space())),
-				Task.Factory.StartNew(() => Application.Run(new TheGame()))
+				//Task.Factory.StartNew(() => Application.Run(new TheGame())),
+				Task.Factory.StartNew(() => Application.Run(new Oscillation()))
 			);
 		}
 	}

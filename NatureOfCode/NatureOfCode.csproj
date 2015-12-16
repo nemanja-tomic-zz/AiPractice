@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Air.cs" />
     <Compile Include="Attractor.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -57,6 +58,13 @@
     <Compile Include="Introduction\Walker8.cs" />
     <Compile Include="Introduction\WalkerToCursor.cs" />
     <Compile Include="Introduction\WalkerToRight.cs" />
+    <Compile Include="Oscillation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Oscillation.Designer.cs">
+      <DependentUpon>Oscillation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OscillationContent\Baton.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Space.cs">
@@ -78,6 +86,9 @@
     <Compile Include="Water.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Oscillation.resx">
+      <DependentUpon>Oscillation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
